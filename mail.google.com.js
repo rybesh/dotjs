@@ -1,3 +1,5 @@
+// This is a dotjs script. See http://defunkt.io/dotjs/
+
 // Hide unread counts.
 var interval, links, text, count = / \(\d+\)/;
 interval = setInterval(function() {
