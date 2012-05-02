@@ -1,14 +1,20 @@
 // This is a dotjs script. See http://defunkt.io/dotjs/
 
-// Hide unread counts.
-var interval, links, text, count = / \(\d+\)/;
-interval = setInterval(function() {
+var interval, links, text, wait = 100, count = / \(\d+\)/;
+
+function hideUnreadCounts() {
   links = $("#canvas_frame").contents().find("div.aim a");
-  if (links.length > 0) { 
-    clearInterval(interval);
+  if (links.length > 0) {
     links.map(function() {
       text = $(this).text();
       $(this).text(text.replace(count, ""));
     });
+    if (wait == 100) {
+      wait = 1000;
+      clearInterval(interval);
+      setInterval(hideUnreadCounts, wait);
+    }
   }
-}, 100);
+}
+
+interval = setInterval(hideUnreadCounts, wait);
