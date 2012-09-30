@@ -3,7 +3,7 @@
 var interval, links, text, wait = 100, count = / \(\d+\)/;
 
 function hideUnreadCounts() {
-  links = $("#canvas_frame").contents().find("div.aim a");
+  links = $("div.aim a");
   if (links.length > 0) {
     links.map(function() {
       text = $(this).text();
